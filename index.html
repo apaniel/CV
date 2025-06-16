@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Aparicio - Staff Software Engineer CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            min-height: 297mm;
+        }
+
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 25px;
+        }
+
+        .main-content {
+            padding: 30px 35px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 14px;
+            color: #ecf0f1;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .location {
+            font-size: 12px;
+            color: #bdc3c7;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content .section-title {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            background: #34495e;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        .job {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+
+        .job-header {
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .previous-job-title {
+            font-weight: bold;
+            font-size: 12px;
+            color: #2c3e59;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #3498db;
+        }
+
+        .job-period {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .job-description {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .job-description ul {
+            margin-left: 15px;
+            margin-top: 8px;
+        }
+
+        .job-description li {
+            margin-bottom: 4px;
+        }
+
+        .tech-stack {
+            margin-top: 10px;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 11px;
+        }
+
+        .profile {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .education-item {
+            margin-bottom: 15px;
+        }
+
+        .degree {
+            font-weight: bold;
+            font-size: 12px;
+            color: #2c3e50;
+        }
+
+        .institution {
+            font-size: 11px;
+            color: #7f8c8d;
+        }
+
+        .year {
+            font-size: 11px;
+            color: #95a5a6;
+        }
+
+        .current-role {
+            border-left: 4px solid #e74c3c;
+            padding-left: 15px;
+            background: #fff5f5;
+            margin-left: -15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .cv-container {
+                box-shadow: none;
+                max-width: none;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .cv-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .sidebar {
+                padding: 20px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .title {
+                font-size: 13px;
+            }
+
+            .skills-list {
+                gap: 6px;
+            }
+
+            .skill-tag {
+                font-size: 9px;
+                padding: 3px 6px;
+            }
+
+            .job {
+                margin-bottom: 20px;
+            }
+
+            .job-title {
+                font-size: 13px;
+            }
+
+            .job-description {
+                font-size: 11px;
+            }
+
+            .tech-stack {
+                font-size: 10px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .sidebar,
+            .main-content {
+                padding: 15px;
+            }
+
+            .name {
+                font-size: 20px;
+            }
+
+            .title {
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 13px;
+            }
+
+            .skills-list {
+                gap: 4px;
+            }
+
+            .skill-tag {
+                font-size: 8px;
+                padding: 2px 4px;
+            }
+
+            .desktop-only {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cv-container">
+        <div class="sidebar">
+            <div class="header">
+                <div class="name">DANIEL APARICIO</div>
+                <div class="title">STAFF SOFTWARE ENGINEER, FULL STACK</div>
+                <div class="location">BARCELONA, SPAIN</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">CONTACT</div>
+                <div class="contact-item"><a href="mailto:dapamar90@gmail.com">dapamar90@gmail.com</a></div>
+                <div class="contact-item"><a href="tel:+34619926084">+34619926084</a></div>
+                <div class="contact-item"><a
+                        href="https://www.linkedin.com/in/daniel-a-m/">linkedin.com/in/daniel-a-m</a></div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">SKILLS</div>
+                <div class="skills-list">
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">Jest</span>
+                    <span class="skill-tag">Cypress</span>
+                    <span class="skill-tag">TDD</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">CMS</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Extreme Programming (XP)</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Analytics</span>
+                    <span class="skill-tag">A/B Testing</span>
+                    <span class="skill-tag">Technical Leadership</span>
+                    <span class="skill-tag">System Architecture</span>
+                    <span class="skill-tag">Data-Driven Engineering</span>
+                    <span class="skill-tag">Cross-functional Collaboration</span>
+                    <span class="skill-tag">Mentoring</span>
+                    <span class="skill-tag">Web Accessibility</span>
+                    <span class="skill-tag">Operational Excellence</span>
+                </div>
+            </div>
+
+            <div class="section desktop-only">
+                <div class="section-title">LANGUAGES</div>
+                <div class="contact-item">Spanish</div>
+                <div class="contact-item">English</div>
+            </div>
+
+            <div class="section desktop-only">
+                <div class="section-title">HOBBIES</div>
+                <div class="contact-item">Rollerblading, Fitness, Nutrition, Travelling, Tattoos, Innovation and
+                    Technology</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <div class="section-title">PROFILE</div>
+                <div class="profile">
+                    Love coding, team player, passionate about clean, tested, and maintainable code. Autonomous engineer
+                    with extreme ownership, attention to detail, and data-driven decision making.
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">EMPLOYMENT HISTORY</div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Staff Software Engineer at <a class="company"
+                                href="https://www.creativefabrica.com">Creative Fabrica</a>,
+                            Remote</div>
+                        <div class="job-period">February 2025 — Present</div>
+                    </div>
+                    <div class="job-description">
+                        Growth team
+                        <ul>
+                            <li>Mentor engineers across the team on observability, testing, and clean code practices
+                            </li>
+                            <li>Reduced page load times from 2s to ~100ms on high-traffic pages, significantly improving
+                                user experience and Core Web Vitals</li>
+                            <li>Built a flicker-free A/B testing solution for above-the-fold content without
+                                compromising performance</li>
+                            <li>Collaborated with product and design teams to prioritize user experience improvements,
+                                resulting in 10% conversion rate improvement</li>
+                            <li>Leading the migration from WordPress to Next.js to modernize our platform</li>
+                            <li>Migrated an old app from hosted to self-hosted Next.js, cutting infrastructure costs by
+                                50% while
+                                maintaining performance</li>
+                            <li>Improved GraphQL developer experience by automating TypeScript types with codegen and
+                                introspection queries</li>
+                        </ul>
+                        <div class="tech-stack">React, Next.js, TypeScript, GraphQL, WordPress, A/B Testing, Performance
+                            Optimization, Self-hosted Solutions, Analytics, Lighthouse, Grafana, Vercel, WCAG</div>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Senior Staff Software Engineer at <a href="https://www.streamyard.com"
+                                class="company">Hopin/StreamYard</a>, Remote</div>
+                        <div class="job-period">March 2024 — January 2025</div>
+                    </div>
+                    <div class="job-header">
+                        <div class="previous-job-title">Staff Software Engineer</div>
+                        <div class="job-period">March 2022 — March 2024</div>
+                    </div>
+                    <div class="job-description">
+                        Product and platform team
+                        <ul>
+                            <li>Led the transition to a monorepo structure, significantly reducing code duplication and
+                                enhancing efficiency</li>
+                            <li>Redesigned integration testing strategy, enabling 90% faster releases and reducing bugs
+                                reaching production</li>
+                            <li>Identified and resolved devex bottlenecks, accelerating feature delivery and
+                                improving time-to-market for user-facing features (92 hours of developer time saved per
+                                month)</li>
+                            <li>Optimized CI pipeline, reducing feature delivery time by 50%</li>
+                            <li>Clean code, TDD and observability mentor for the whole engineering team</li>
+                            <li>Implemented machine translation capabilities, enabling global product expansion and
+                                reducing localization costs by 60%</li>
+                            <li>Partnered with UX team to implement user-requested features, increasing user
+                                satisfaction scores by 40%</li>
+                            <li>Led the migration from React 16 to React 18 with 0 production issues and 0 developer
+                                downtime</li>
+                            <li>Architected and maintained high-scale infrastructure supporting 50k rpm requests
+                                during peak usage</li>
+                        </ul>
+                        <div class="tech-stack">TypeScript, JavaScript, Redis, Node, React, Python, Bash, Starlark,
+                            WCAG,
+                            Cypress, Playwright, pnpm, TDD, Docker, Terraform, Devex, GHA, CircleCI, Contentful,
+                            Next.js, New Relic, Otel, Redux, Datastore, Turborepo</div>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Lead Software Engineer at <a href="https://www.vistaprint.com"
+                                class="company">Vistaprint</a>, Remote
+                        </div>
+                        <div class="job-period">April 2021 — March 2022</div>
+                    </div>
+                    <div class="job-header">
+                        <div class="previous-job-title">Senior Software Engineer</div>
+                        <div class="job-period">January 2018 — April 2021</div>
+                    </div>
+                    <div class="job-description">
+                        Growth team
+                        <ul>
+                            <li>Tech lead for 20M+ upper funnel SEO pages</li>
+                            <li>Leading a project with 4 developers during the pandemic, in a not initially remote
+                                company managed to deliver on-time high-quality software</li>
+                            <li>Built automated localization system that accelerated international market expansion from
+                                5 weeks to 2 hours per new locale, enabling rapid global growth</li>
+                            <li>Worked closely with product managers to translate user feedback into technical
+                                solutions, improving conversion rates by 15%</li>
+                            <li>Established TDD and clean code practices across the engineering team, reducing
+                                production bugs by 75% and improving feature delivery quality</li>
+                            <li>Streamlined deployment pipeline, enabling 90% faster feature releases and daily product
+                                updates for improved user experience</li>
+                            <li>Reduced critical content issues in production to 0</li>
+                        </ul>
+                        <div class="tech-stack">JavaScript, TypeScript, ReactJS, GraphQL, HTML/CSS, Babel, Webpack,
+                            Serverless, GatsbyJS, ExpressJS, TDD, Jest, Enzyme, Cypress, Contentful (CMS), AWS, A/B
+                            Testing, Google Analytics, Github, Gitlab, Python, Optimizely, SQS, SNS, RDS</div>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">R&amp;D Software Engineer at <a href="https://www.hp.com"
+                                class="company">HP</a>,
+                            Barcelona</div>
+                        <div class="job-period">August 2015 — December 2017</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Member of the program Innotalent+25</li>
+                            <li>Improved build time by 50% by applying incremental builds</li>
+                        </ul>
+                        <div class="tech-stack">HTML, JavaScript, ReactJS, TDD, Agile, Scrum, Rxjs, Kubernetes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Software Engineer at <a href="https://www.aquaservice.com"
+                                class="company">Aquaservice</a>, Valencia</div>
+                        <div class="job-period">May 2015 — July 2015</div>
+                    </div>
+                    <div class="job-description">
+                        <div class="tech-stack">SQL, Database Management</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">INTERNSHIPS</div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Software Engineer at <a href="https://www.olorama.com"
+                                class="company">Olorama</a>, Valencia
+                        </div>
+                        <div class="job-period">June 2014 — February 2015</div>
+                    </div>
+                    <div class="job-description">
+                        Full-stack development role at an early-stage startup, working directly with the founder on
+                        client projects and product development across multiple platforms.
+                        <div class="tech-stack">Java, PostgreSQL, HTML, CSS, Android</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">EDUCATION</div>
+
+                <div class="education-item">
+                    <div class="degree">Master's Degree in Project Management</div>
+                    <div class="institution">Universidad La Salle, Barcelona</div>
+                    <div class="year">2015 — 2016</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">Master's Degree in Computer and Network Engineering</div>
+                    <div class="institution">Universidad Politécnica de Valencia, Valencia</div>
+                    <div class="year">2013 — 2015</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">Computer Engineering</div>
+                    <div class="institution">Universidad de Salamanca, Salamanca</div>
+                    <div class="year">2008 — 2012</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
