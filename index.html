@@ -6,38 +6,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daniel Aparicio - Staff Software Engineer CV</title>
     <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --container-bg: white;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: white;
+            --main-text: #333;
+            --section-title-color: #2c3e50;
+            --section-border-color: #3498db;
+            --company-color: #3498db;
+            --job-period-color: #7f8c8d;
+            --profile-text: #555;
+            --tech-stack-color: #7f8c8d;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --current-role-bg: #fff5f5;
+            --current-role-border: #e74c3c;
+            --skill-tag-bg: #34495e;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --container-bg: #2d2d2d;
+            --sidebar-bg: #1e1e1e;
+            --sidebar-text: #e0e0e0;
+            --main-text: #e0e0e0;
+            --section-title-color: #4a9eff;
+            --section-border-color: #4a9eff;
+            --company-color: #4a9eff;
+            --job-period-color: #a0a0a0;
+            --profile-text: #c0c0c0;
+            --tech-stack-color: #a0a0a0;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --current-role-bg: #3a2626;
+            --current-role-border: #ff6b6b;
+            --skill-tag-bg: #404040;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--section-title-color);
+            color: var(--container-bg);
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.4;
-            color: #333;
-            background: #f8f9fa;
+            color: var(--main-text);
+            background: var(--bg-color);
             padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--container-bg);
+            border: 2px solid var(--section-border-color);
+            border-radius: 50px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--main-text);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .cv-container {
             max-width: 210mm;
             margin: 0 auto;
-            background: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background: var(--container-bg);
+            box-shadow: 0 0 20px var(--shadow-color);
             display: grid;
             grid-template-columns: 1fr 2fr;
             min-height: 297mm;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .sidebar {
-            background: #2c3e50;
-            color: white;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
             padding: 30px 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .main-content {
             padding: 30px 35px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
         }
 
         .header {
@@ -54,14 +137,16 @@
 
         .title {
             font-size: 14px;
-            color: #ecf0f1;
+            color: var(--sidebar-text);
             margin-bottom: 15px;
             font-weight: 300;
+            opacity: 0.8;
         }
 
         .location {
             font-size: 12px;
-            color: #bdc3c7;
+            color: var(--sidebar-text);
+            opacity: 0.6;
         }
 
         .section {
@@ -77,10 +162,11 @@
         }
 
         .main-content .section-title {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
+            color: var(--section-title-color);
+            border-bottom: 2px solid var(--section-border-color);
             padding-bottom: 5px;
             margin-bottom: 20px;
+            transition: color 0.3s ease, border-color 0.3s ease;
         }
 
         .contact-item {
@@ -97,11 +183,12 @@
         }
 
         .skill-tag {
-            background: #34495e;
+            background: var(--skill-tag-bg);
             padding: 4px 8px;
             border-radius: 12px;
             font-size: 10px;
             white-space: nowrap;
+            transition: background-color 0.3s ease;
         }
 
         .job {
@@ -116,25 +203,29 @@
         .job-title {
             font-weight: bold;
             font-size: 14px;
-            color: #2c3e50;
+            color: var(--main-text);
+            transition: color 0.3s ease;
         }
 
         .previous-job-title {
             font-weight: bold;
             font-size: 12px;
-            color: #2c3e59;
+            color: var(--main-text);
+            transition: color 0.3s ease;
         }
 
         .company {
             font-weight: 600;
-            color: #3498db;
+            color: var(--company-color);
+            transition: color 0.3s ease;
         }
 
         .job-period {
             font-size: 12px;
-            color: #7f8c8d;
+            color: var(--job-period-color);
             font-style: italic;
             margin-bottom: 8px;
+            transition: color 0.3s ease;
         }
 
         .job-description {
@@ -154,8 +245,9 @@
         .tech-stack {
             margin-top: 10px;
             font-style: italic;
-            color: #7f8c8d;
+            color: var(--tech-stack-color);
             font-size: 11px;
+            transition: color 0.3s ease;
         }
 
         /* Link styling */
@@ -174,20 +266,21 @@
         }
 
         /* Main content links */
-        .main-content a {
+        .main-content a:not(.company) {
             color: inherit;
         }
 
         /* Company links specifically */
         .company {
-            color: #3498db;
+            color: var(--company-color) !important;
         }
 
         .profile {
             font-size: 13px;
             line-height: 1.6;
-            color: #555;
+            color: var(--profile-text);
             margin-bottom: 25px;
+            transition: color 0.3s ease;
         }
 
         .education-item {
@@ -197,26 +290,37 @@
         .degree {
             font-weight: bold;
             font-size: 12px;
-            color: #2c3e50;
+            color: var(--main-text);
+            transition: color 0.3s ease;
         }
 
         .institution {
             font-size: 11px;
-            color: #7f8c8d;
+            color: var(--job-period-color);
+            transition: color 0.3s ease;
         }
 
         .year {
             font-size: 11px;
-            color: #95a5a6;
+            color: var(--tech-stack-color);
+            transition: color 0.3s ease;
         }
 
         .current-role {
-            border-left: 4px solid #e74c3c;
+            border-left: 4px solid var(--current-role-border);
             padding-left: 15px;
-            background: #fff5f5;
+            background: var(--current-role-bg);
             margin-left: -15px;
             padding-top: 10px;
             padding-bottom: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .theme-toggle {
+                top: 20px;
+                bottom: auto;
+            }
         }
 
         @media print {
@@ -229,11 +333,22 @@
                 box-shadow: none;
                 max-width: none;
             }
+
+            .theme-toggle {
+                display: none;
+            }
         }
 
         @media screen and (max-width: 768px) {
             body {
                 padding: 10px;
+            }
+
+            .theme-toggle {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 12px;
+                font-size: 12px;
             }
 
             .cv-container {
@@ -288,6 +403,13 @@
                 padding: 5px;
             }
 
+            .theme-toggle {
+                bottom: 15px;
+                right: 15px;
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+
             .sidebar,
             .main-content {
                 padding: 15px;
@@ -322,24 +444,29 @@
 </head>
 
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        🌙
+    </button>
+
     <div class="cv-container">
         <div class="sidebar">
-            <div class="header">
-                <div class="name">DANIEL APARICIO</div>
-                <div class="title">STAFF SOFTWARE ENGINEER, FULL STACK</div>
+            <header class="header">
+                <h1 class="name">DANIEL APARICIO</h1>
+                <p class="title">STAFF SOFTWARE ENGINEER, FULL STACK</p>
                 <div class="location">BARCELONA, SPAIN</div>
-            </div>
+            </header>
 
-            <div class="section">
-                <div class="section-title">CONTACT</div>
+            <section class="section">
+                <h2 class="section-title">CONTACT</h2>
                 <div class="contact-item"><a href="mailto:dapamar90@gmail.com">dapamar90@gmail.com</a></div>
                 <div class="contact-item"><a href="tel:+34619926084">+34619926084</a></div>
                 <div class="contact-item"><a
                         href="https://www.linkedin.com/in/daniel-a-m/">linkedin.com/in/daniel-a-m</a></div>
-            </div>
+            </section>
 
-            <div class="section">
-                <div class="section-title">SKILLS</div>
+            <section class="section">
+                <h2 class="section-title">SKILLS</h2>
                 <div class="skills-list">
                     <span class="skill-tag">React</span>
                     <span class="skill-tag">Next.js</span>
@@ -367,40 +494,40 @@
                     <span class="skill-tag">Web Accessibility</span>
                     <span class="skill-tag">Operational Excellence</span>
                 </div>
-            </div>
+            </section>
 
-            <div class="section desktop-only">
-                <div class="section-title">LANGUAGES</div>
+            <section class="section desktop-only">
+                <h2 class="section-title">LANGUAGES</h2>
                 <div class="contact-item">Spanish</div>
                 <div class="contact-item">English</div>
-            </div>
+            </section>
 
-            <div class="section desktop-only">
-                <div class="section-title">HOBBIES</div>
+            <section class="section desktop-only">
+                <h2 class="section-title">HOBBIES</h2>
                 <div class="contact-item">Rollerblading, Fitness, Nutrition, Travelling, Tattoos, Innovation and
                     Technology</div>
-            </div>
+            </section>
         </div>
 
-        <div class="main-content">
-            <div class="section">
-                <div class="section-title">PROFILE</div>
+        <main class="main-content" id="main" role="main">
+            <section class="section">
+                <h2 class="section-title">PROFILE</h2>
                 <div class="profile">
                     Love coding, team player, passionate about clean, tested, and maintainable code. Autonomous engineer
                     with extreme ownership, attention to detail, and data-driven decision making.
                 </div>
-            </div>
+            </section>
 
-            <div class="section">
-                <div class="section-title">EMPLOYMENT HISTORY</div>
+            <section class="section">
+                <h2 class="section-title">EMPLOYMENT HISTORY</h2>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Staff Software Engineer at <a class="company"
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">Staff Software Engineer at <a class="company"
                                 href="https://www.creativefabrica.com">Creative Fabrica</a>,
-                            Remote</div>
+                            Remote</h3>
                         <div class="job-period">February 2025 — Present</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         Growth team
                         <ul>
@@ -422,18 +549,18 @@
                         <div class="tech-stack">React, Next.js, TypeScript, GraphQL, WordPress, A/B Testing, Performance
                             Optimization, Self-hosted Solutions, Analytics, Lighthouse, Grafana, Vercel, WCAG</div>
                     </div>
-                </div>
+                </article>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Senior Staff Software Engineer at <a href="https://www.streamyard.com"
-                                class="company">Hopin/StreamYard</a>, Remote</div>
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">Senior Staff Software Engineer at <a href="https://www.streamyard.com"
+                                class="company">Hopin/StreamYard</a>, Remote</h3>
                         <div class="job-period">March 2024 — January 2025</div>
-                    </div>
-                    <div class="job-header">
-                        <div class="previous-job-title">Staff Software Engineer</div>
+                    </header>
+                    <header class="job-header">
+                        <h4 class="previous-job-title">Staff Software Engineer</h4>
                         <div class="job-period">March 2022 — March 2024</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         Product and platform team
                         <ul>
@@ -460,19 +587,19 @@
                             Cypress, Playwright, pnpm, TDD, Docker, Terraform, Devex, GHA, CircleCI, Contentful,
                             Next.js, New Relic, Otel, Redux, Datastore, Turborepo</div>
                     </div>
-                </div>
+                </article>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Lead Software Engineer at <a href="https://www.vistaprint.com"
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">Lead Software Engineer at <a href="https://www.vistaprint.com"
                                 class="company">Vistaprint</a>, Remote
-                        </div>
+                        </h3>
                         <div class="job-period">April 2021 — March 2022</div>
-                    </div>
-                    <div class="job-header">
-                        <div class="previous-job-title">Senior Software Engineer</div>
+                    </header>
+                    <header class="job-header">
+                        <h4 class="previous-job-title">Senior Software Engineer</h4>
                         <div class="job-period">January 2018 — April 2021</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         Growth team
                         <ul>
@@ -493,15 +620,15 @@
                             Serverless, GatsbyJS, ExpressJS, TDD, Jest, Enzyme, Cypress, Contentful (CMS), AWS, A/B
                             Testing, Google Analytics, Github, Gitlab, Python, Optimizely, SQS, SNS, RDS</div>
                     </div>
-                </div>
+                </article>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">R&amp;D Software Engineer at <a href="https://www.hp.com"
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">R&amp;D Software Engineer at <a href="https://www.hp.com"
                                 class="company">HP</a>,
-                            Barcelona</div>
+                            Barcelona</h3>
                         <div class="job-period">August 2015 — December 2017</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         <ul>
                             <li>Member of the program Innotalent+25</li>
@@ -510,64 +637,95 @@
                         <div class="tech-stack">HTML, JavaScript, ReactJS, TDD, Agile, Scrum, Rxjs, Kubernetes
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Software Engineer at <a href="https://www.aquaservice.com"
-                                class="company">Aquaservice</a>, Valencia</div>
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">Software Engineer at <a href="https://www.aquaservice.com"
+                                class="company">Aquaservice</a>, Valencia</h3>
                         <div class="job-period">May 2015 — July 2015</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         <div class="tech-stack">SQL, Database Management</div>
                     </div>
-                </div>
-            </div>
+                </article>
+            </section>
 
-            <div class="section">
-                <div class="section-title">INTERNSHIPS</div>
+            <section class="section">
+                <h2 class="section-title">INTERNSHIPS</h2>
 
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Software Engineer at <a href="https://www.olorama.com"
+                <article class="job">
+                    <header class="job-header">
+                        <h3 class="job-title">Software Engineer at <a href="https://www.olorama.com"
                                 class="company">Olorama</a>, Valencia
-                        </div>
+                        </h3>
                         <div class="job-period">June 2014 — February 2015</div>
-                    </div>
+                    </header>
                     <div class="job-description">
                         Full-stack development role at an early-stage startup, working directly with the founder on
                         client projects and product development across multiple platforms.
                         <div class="tech-stack">Java, PostgreSQL, HTML, CSS, Android</div>
                     </div>
-                </div>
-            </div>
+                </article>
+            </section>
 
-            <div class="section">
-                <div class="section-title">EDUCATION</div>
+            <section class="section">
+                <h2 class="section-title">EDUCATION</h2>
 
                 <div class="education-item">
-                    <div class="degree">Master's Degree in Project Management</div>
+                    <h3 class="degree">Master's Degree in Project Management</h3>
                     <div class="institution">Universidad La Salle, Barcelona</div>
                     <div class="year">2015 — 2016</div>
                 </div>
 
                 <div class="education-item">
-                    <div class="degree">Master's Degree in Computer and Network Engineering</div>
+                    <h3 class="degree">Master's Degree in Computer and Network Engineering</h3>
                     <div class="institution">Universidad Politécnica de Valencia, Valencia</div>
                     <div class="year">2013 — 2015</div>
                 </div>
 
                 <div class="education-item">
-                    <div class="degree">Computer Engineering</div>
+                    <h3 class="degree">Computer Engineering</h3>
                     <div class="institution">Universidad de Salamanca, Salamanca</div>
                     <div class="year">2008 — 2012</div>
                 </div>
-            </div>
+            </section>
 
-        </div>
+        </main>
     </div>
 
     </div>
+
+    <script>
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+
+        // Update button text based on current theme
+        updateToggleButton();
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+
+            updateToggleButton();
+        }
+
+        function updateToggleButton() {
+            const button = document.querySelector('.theme-toggle');
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                button.innerHTML = '☀️';
+            } else {
+                button.innerHTML = '🌙';
+            }
+        }
+    </script>
+
 </body>
 
 </html>
